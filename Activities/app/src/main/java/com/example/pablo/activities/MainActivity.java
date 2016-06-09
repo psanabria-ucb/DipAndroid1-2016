@@ -1,5 +1,6 @@
 package com.example.pablo.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
         if (rightUsername.equals(username.getText().toString()) &&
                 rightPassword.equals(password.getText().toString())) {
             Toast.makeText(this, R.string.login_success, Toast.LENGTH_LONG).show();
+            User user = new User();
+
+            user.setUsername(username.getText().toString());
+            user.setPassword(password.getText().toString());
+
+            Intent intent = new Intent(this, DashboardActivity.class);
+
+            intent.putExtra("USER", user);
+            startActivity(intent);
         } else {
             Toast.makeText(this, R.string.login_failed, Toast.LENGTH_LONG).show();
         }
