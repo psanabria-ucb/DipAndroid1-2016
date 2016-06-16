@@ -3,6 +3,7 @@ package com.example.pablo.tabsexample.network;
 import android.os.AsyncTask;
 
 import com.example.pablo.tabsexample.MainActivity;
+import com.example.pablo.tabsexample.PostFragment;
 import com.example.pablo.tabsexample.model.Post;
 
 import java.io.IOException;
@@ -18,10 +19,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Pablo on 6/15/2016.
  */
 public class RetrievePostsAsyncTask extends AsyncTask<Void, Void, List<Post>> {
-    private MainActivity activity;
+    private PostFragment fragment;
 
-    public RetrievePostsAsyncTask(MainActivity activity) {
-        this.activity = activity;
+    public RetrievePostsAsyncTask(PostFragment postFragment) {
+        this.fragment = postFragment;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class RetrievePostsAsyncTask extends AsyncTask<Void, Void, List<Post>> {
 
     @Override
     protected void onPostExecute(List<Post> posts) {
-        activity.getAdapter().clear();
-        activity.getAdapter().addAll(posts);
+        fragment.getAdapter().clear();
+        fragment.getAdapter().addAll(posts);
     }
 }
