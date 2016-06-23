@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.example.pablo.tabsexample.MainActivity;
 import com.example.pablo.tabsexample.PostFragment;
 import com.example.pablo.tabsexample.model.Post;
+import com.example.pablo.tabsexample.model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;

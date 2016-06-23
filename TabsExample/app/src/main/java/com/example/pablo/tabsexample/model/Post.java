@@ -4,11 +4,13 @@ public class Post {
     private int id;
     private String title;
     private String content;
+    private User user;
 
     public Post() {
         id = 0;
         title = "";
         content = "";
+        user = new User();
     }
 
     public int getId() {
@@ -33,5 +35,13 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

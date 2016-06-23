@@ -5,10 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.pablo.tabsexample.R;
 import com.example.pablo.tabsexample.model.Post;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostAdapter extends ArrayAdapter<Post> {
     public PostAdapter(Context context) {
@@ -29,9 +33,11 @@ public class PostAdapter extends ArrayAdapter<Post> {
 
         TextView titleTextView = (TextView)currentView.findViewById(R.id.title_text_view);
         TextView contentTextView = (TextView)currentView.findViewById(R.id.content_text_view);
+        CircleImageView profileImageView = (CircleImageView) currentView.findViewById(R.id.profile_image_view);
 
         titleTextView.setText(post.getTitle());
         contentTextView.setText(post.getContent());
+        Glide.with(getContext()).load(post.getUser().getPicture_url()).into(profileImageView);
 
         return currentView;
     }

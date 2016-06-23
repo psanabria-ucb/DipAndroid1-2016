@@ -7,9 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.pablo.tabsexample.adapter.PostAdapter;
+import com.example.pablo.tabsexample.model.Post;
 import com.example.pablo.tabsexample.network.RetrievePostsAsyncTask;
 
 
@@ -25,6 +28,15 @@ public class PostFragment extends Fragment {
         listView = (ListView)view.findViewById(R.id.posts_list_view);
         adapter = new PostAdapter(getActivity());
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Post p = adapter.getItem(position);
+
+                Toast.makeText(getActivity(), p.getTitle(), Toast.LENGTH_LONG).show();
+            }
+        });
 
         RetrievePostsAsyncTask task = new RetrievePostsAsyncTask(this);
         task.execute();
